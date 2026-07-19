@@ -137,20 +137,21 @@ button#pause.hidden {
         box-sizing: border-box;
         font-family: 'frlg';
         font-weight: normal;
-        border: none;
+        border: 0px solid transparent;
         padding-left: 16px;
         padding-right: 20px;
         filter: drop-shadow(0 0 0 white 4px);
         #menuHeader {
             font-size: 18px;
-            transform: translateY(-6px);
+            transform: translateY(-12px);
         }
         .itemScroll {
             height: 200px;
-            margin-top: 18px;
+            margin-top: 0px;
             padding-left: 12px;
-            overflow-y: auto;
+            overflow-y: hidden;
             scrollbar-width: thin;
+            transform: translateY(-18px);
             p {
                 color: #383838;
                 line-height: 21px;
@@ -198,14 +199,15 @@ button#pause.hidden {
         filter: drop-shadow(0 0 0 white 4px);
         #mainmenuHeader {
             font-size: 18px;
-            transform: translateY(-6px);
+            transform: translateY(-12px);
         }
         .itemScroll {
             height: 200px;
-            margin-top: 18px;
+            margin-top: 0px;
             padding-left: 12px;
-            overflow-y: auto;
+            overflow-y: hidden;
             scrollbar-width: thin;
+            transform: translateY(-18px);
             p {
                 color: #383838;
                 line-height: 21px;
