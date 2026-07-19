@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pok&eacute;Guessr</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons&display=swap;">
+</head>
+<body>
+    <button id="fullscreen" class="material-icons">
+        fullscreen
+    </button>
+    <div id="game">
+        <button id="pause" class="material-icons">
+            pause
+        </button>
+        <div id="overlay">
+            <div id="overlayWindow">
+                <p id="menuHeader">Credits</p>
+                <div class="itemScroll">
+                    <div id="contentSettings">
+                        <p>Difficulty: <span id="diffshow1">Easy</span>.<br><span id="diffmsg"></span></p>
+                        <div class="btnrow">
+                            <button class="diffselec" data-diff="easy">Easy</button>
+                            <button class="diffselec" data-diff="medium">Medium</button>
+                            <button class="diffselec" data-diff="hard">Hard</button>
+                        </div>
+                    </div>
+                    <div id="contentCredits">
+                        <p>
+                            This game was made with plain HTML, CSS and JavaScript by ggblockster.<br>This game is unnoficial; so it's not made by, endorsed or affiliated with Nintendo, the Pokémon Company, or GameFreak.<br>All assets belong to their respective owners.<br>&emsp;Pok&eacute;Guessr v1.0
+                        </p>
+                    </div>
+                    <div id="contentPause">
+                        <br>
+                        <button id="resume">Resume</button>
+                        <button id="exitGame">Exit</button>
+                    </div>
+                </div>
+                <button id="overlayBack">Go Back</button>
+            </div>
+        </div>
+        <div id="clicktoplay">
+            <button id="clicktoplayBtn">Click to Play</button>
+        </div>
+        <div id="title" class="hidden">
+            <img src="/assets/logo.png" alt="Pok&eacute;Guessr Logo" class="logo">
+            <div class="btncol">
+                <button id="titleStart">Start</button>
+                <button id="titleSettings">Settings</button>
+                <button id="titleCredits">Credits</button>
+            </div>
+            <p>Made by ggblockster.<br>See credits for more info.</p>
+        </div>
+        <div id="menu">
+            <div class="window">
+                <p id="mainmenuHeader">Select a Mode:</p>
+                <div class="itemScroll">
+                    <div id="contentMenu">
+                        <p>
+                            Guess each Pok&eacute;mon as fast as you can in a limited amount of time in <i>timed</i> mode.
+                            <br>Selected difficulty: <span id="diffshow2"></span>.
+                        </p>
+                        <div class="btnrow">
+                            <button id="normalMode">Normal</button>
+                            <button id="timedMode">Timed</button>
+                        </div>
+                    </div>
+                </div>
+                <button id="menuBack">Go Back</button>
+            </div>
+        </div>
+        <div id="guessr">
+            <img src="" alt="Pok&eacute;mon image" id="mon">
+            <div class="dialogue">
+                <p>Enter your guess here:</p>
+                <input type="text" name="" id="guessInput">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/message.js"></script>
+<script type="module" src="/js/index.js"></script>
+</html>
