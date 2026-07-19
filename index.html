@@ -1,86 +1,339 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pok&eacute;Guessr</title>
-    <link rel="stylesheet" href="/index.css">
-    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons&display=swap;">
-</head>
-<body>
-    <button id="fullscreen" class="material-icons">
-        fullscreen
-    </button>
-    <div id="game">
-        <button id="pause" class="material-icons">
-            pause
-        </button>
-        <div id="overlay">
-            <div id="overlayWindow">
-                <p id="menuHeader">Credits</p>
-                <div class="itemScroll">
-                    <div id="contentSettings">
-                        <p>Difficulty: <span id="diffshow1">Easy</span>.<br><span id="diffmsg"></span></p>
-                        <div class="btnrow">
-                            <button class="diffselec" data-diff="easy">Easy</button>
-                            <button class="diffselec" data-diff="medium">Medium</button>
-                            <button class="diffselec" data-diff="hard">Hard</button>
-                        </div>
-                    </div>
-                    <div id="contentCredits">
-                        <p>
-                            This game was made by ggblockster. This game is unofficial; it's not made, endorsed, or affiliated with Nintendo, the Pok&eacute;mon Company, or GameFreak. All assets belong to their respective owners. Pok&eacute;mon sprites come from Pok&eacute;mon FireRed &amp; LeafGreen and the Pok&eacute;API.
-                        </p>
-                    </div>
-                    <div id="contentPause">
-                        <br>
-                        <button id="resume">Resume</button>
-                        <button id="exitGame">Exit</button>
-                    </div>
-                </div>
-                <button id="overlayBack">Go Back</button>
-            </div>
-        </div>
-        <div id="clicktoplay">
-            <button id="clicktoplayBtn">Click to Play</button>
-        </div>
-        <div id="title" class="hidden">
-            <img src="/assets/logo.png" alt="Pok&eacute;Guessr Logo" class="logo">
-            <div class="btncol">
-                <button id="titleStart">Start</button>
-                <button id="titleSettings">Settings</button>
-                <button id="titleCredits">Credits</button>
-            </div>
-            <p>Made by ggblockster.<br>See credits for more info.</p>
-        </div>
-        <div id="menu">
-            <div class="window">
-                <p id="mainmenuHeader">Select a Mode:</p>
-                <div class="itemScroll">
-                    <div id="contentMenu">
-                        <p>
-                            Guess each Pok&eacute;mon as fast as you can in a limited amount of time in <i>timed</i> mode.
-                            <br>Selected difficulty: <span id="diffshow2"></span>.
-                        </p>
-                        <div class="btnrow">
-                            <button id="normalMode">Normal</button>
-                            <button id="timedMode">Timed</button>
-                        </div>
-                    </div>
-                </div>
-                <button id="menuBack">Go Back</button>
-            </div>
-        </div>
-        <div id="guessr">
-            <img src="" alt="Pok&eacute;mon image" id="mon">
-            <div class="dialogue">
-                <p>Enter your guess here:</p>
-                <input type="text" name="" id="guessInput">
-            </div>
-        </div>
-    </div>
-</body>
-<script src="/js/message.js"></script>
-<script type="module" src="/js/index.js"></script>
-</html>
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+    cursor: url('/assets/cursor.png') 4 4, auto; 
+}
+
+:root {
+    --colBLACK: #000;
+    --colBG: #f5c262;
+    --colBUTTON: #3c7f99;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button#fullscreen, button#pause {
+    padding: 2px;
+    position: absolute;
+    z-index: 9999;
+    border: 8px solid transparent;
+    border-image: url("/assets/button.png") 8 fill stretch;
+    background-color: transparent;
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    color: #383838;
+    text-shadow: 2px 2px #d8d8d8;
+    cursor: url('/assets/pointer.png') 8 4, auto;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+button#fullscreen {
+    right: 4px;
+    top: 4px;
+    font-size: 24px;
+}
+
+button#pause {
+    left: 4px;
+    top: 4px;
+    font-size: 12px;
+}
+
+button#pause.hidden {
+    display: none;
+}
+
+#game {
+    display: grid;
+    place-items: center;
+    width: 640px;
+    height: 360px;
+    transform-origin: center center;
+    box-sizing: border-box;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    outline: #29333d 1px solid;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+    img {
+        user-drag: none;
+        -ms-user-drag: none;
+        -moz-user-drag: none;
+        -webkit-user-drag: none;
+    }
+    .btncol {
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        gap: 8px;
+        width: 300px;
+        margin-top: 12px;
+    }
+    button:not(#clicktoplayBtn) {
+        cursor: url('/assets/pointer.png') 8 4, auto;
+        padding: 0;
+        color: #383838;
+        text-shadow: 1px 1px #d8d8d8;
+        background-color: transparent;
+        box-sizing: border-box;
+        border: 8px solid transparent;
+        border-image: url("/assets/button.png") 8 fill stretch;
+    }
+    button:not(#clicktoplayBtn, #pause) {
+        font-family: 'frlg';
+        font-size: 18px;
+    }
+    p {
+        color: #d8d8d8;
+        text-shadow: 1px 1px #383838;
+        font-family: 'frlg';
+        font-size: 18px;
+    }
+    .btncol.title {
+        border-image: url("/assets/button.png") 8 stretch;
+    }
+    .logo {
+        aspect-ratio: initial;
+        height: 100px;
+        filter: drop-shadow(8px 8px #1aa38f)
+    }
+    #overlay {
+        place-items: center;
+        display: grid;
+        position: absolute;
+        width: 640px;
+        height: 360px;
+        background-color: #1d0f3080;
+        z-index: 5;
+    }
+    #overlay.hidden {
+        display: none;
+    }
+    #overlayWindow {
+        position: absolute;
+        width: 360px;
+        height: 238.5px;
+        z-index: 10;
+        background-image: url('/assets/panel.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        box-sizing: border-box;
+        font-family: 'frlg';
+        font-weight: normal;
+        border: 0px solid transparent;
+        padding-left: 16px;
+        padding-right: 20px;
+        filter: drop-shadow(0 0 0 white 4px);
+        #menuHeader {
+            font-size: 18px;
+            transform: translateY(-12px);
+        }
+        .itemScroll {
+            height: 200px;
+            margin-top: 0px;
+            padding-left: 12px;
+            overflow-y: hidden;
+            scrollbar-width: thin;
+            transform: translateY(-18px);
+            p {
+                color: #383838;
+                line-height: 21px;
+                text-shadow: 1px 1px #d8d8d8;
+                font-family: 'frlg';
+                font-size: 18px;
+            }
+        }
+        button {
+            width: 100%;
+        }
+        .btnrow {
+            display: flex;
+            gap: 8px;
+            width: 100%;
+            button {
+                width: 100%;
+            }
+            button[selected="selected"] {
+                border-image-source: url('/assets/button_focus.png');
+            }
+        }
+    }
+    #menu {
+        width: 640px;
+        height: 360px;
+        display: grid;
+        place-items: center;
+    }
+    #menu.hidden {
+        display: none;
+    }
+    .window {
+        width: 360px;
+        height: 238.5px;
+        background-image: url('/assets/panel.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        box-sizing: border-box;
+        font-family: 'frlg';
+        font-weight: normal;
+        border: none;
+        padding-left: 16px;
+        padding-right: 28px;
+        filter: drop-shadow(0 0 0 white 4px);
+        #mainmenuHeader {
+            font-size: 18px;
+            transform: translateY(-12px);
+        }
+        .itemScroll {
+            height: 200px;
+            margin-top: 0px;
+            padding-left: 12px;
+            overflow-y: hidden;
+            scrollbar-width: thin;
+            transform: translateY(-18px);
+            p {
+                color: #383838;
+                line-height: 21px;
+                text-shadow: 1px 1px #d8d8d8;
+                font-family: 'frlg';
+                font-size: 18px;
+            }
+        }
+        button {
+            width: 100%;
+        }
+        .btnrow {
+            display: flex;
+            gap: 8px;
+            width: 100%;
+            button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+#clicktoplay {
+    button {
+        cursor: url('/assets/pointer.png') 4 4, auto;
+        padding: 8px 16px;
+        font-size: 1em;
+        font-family: 'Inter';
+        border-radius: 0.4em;
+        border: none;
+        background-color: var(--colBUTTON);
+        color: white;
+        transition: 0.2s ease-in-out;
+    }
+    button:hover {
+        filter: brightness(1.2);
+        transform: scale(1.05);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+@font-face {
+    font-family: 'frlg';
+    src: url("/assets/fonts/frlg.woff2");
+}
+
+#game.splashBg {
+    background-image: url("/assets/menuPattern.png");
+    background-size: 128px;
+    animation: slowscroll 60s linear infinite;
+}
+
+#game #title {
+    p {
+        display: flex;
+        justify-self: center;
+        text-align: center;
+    }
+}
+
+#guessr {
+    display: grid;
+    place-items: center;
+    width: 640px;
+    height: 360px;
+    background-image: url("/assets/guessBg.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    .dialogue {
+        position: absolute;
+        width: 600px;
+        height: 120px;
+        left: 20px;
+        bottom: 20px;
+        border: 20px solid transparent; /* Must have width & style */
+        border-image: url('/assets/dialogueBox.png') 20 fill stretch;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        p, input {
+            font-family: 'frlg';
+            font-size: 18px;
+            color: #383838;
+            text-shadow: 2px 2px #d8d8d8;
+        }
+        input {
+            padding: 0;
+            color: #383838;
+            text-shadow: 1px 1px #d8d8d8;
+            background-color: transparent;
+            box-sizing: border-box;
+            border: 8px solid transparent;
+            border-image: url("/assets/button.png") 8 fill stretch;
+            font-family: 'frlg';
+            font-size: 18px;
+        }
+        input:focus {
+            border-image: url("/assets/button_focus.png") 8 fill stretch;
+            outline: transparent 0px solid;
+        }
+    }
+    img#mon {
+        position: absolute;
+        transform: scale(2);
+        bottom: 190px;
+        filter: none;
+    }
+    img#mon.ghosted {
+        filter: brightness(0);
+    }
+    img#mon.hidden {
+        display: none;
+    }
+}
+
+#guessr.hidden {
+    display: none;
+}
+
+@keyframes slowscroll {
+    from {
+        background-position: 0 0;
+    } to {
+        background-position: -640px 320px;
+    }
+}
