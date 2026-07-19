@@ -78,11 +78,6 @@ button#pause.hidden {
         -moz-user-drag: none;
         -webkit-user-drag: none;
     }
-    h1 {
-        font-family: 'pkmn';
-        font-weight: normal;
-        font-size: 3em;
-    }
     .btncol {
         display: flex;
         flex-direction: column;
@@ -253,12 +248,6 @@ button#pause.hidden {
 
 .hidden {
     display: none;
-}
-
-@font-face {
-    font-family: 'pkmn';
-    src: url("/assets/fonts/PocketMonk-15ze.ttf");
-    font-synthesis: none;
 }
 
 @font-face {
