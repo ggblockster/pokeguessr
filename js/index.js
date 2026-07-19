@@ -354,13 +354,14 @@ normalBtn.addEventListener("click", () => {
 async function refreshMon() {
     guessInput.value = "";
     guessInput.setAttribute("placeholder", "");
+    difficulty = localStorage.getItem("difficulty");
 
     if (difficulty == "easy") {
         monIDX = getRandom(1, 151);
     } else if (difficulty == "medium") {
-        monIDX = getRandom(1, 649);
+        monIDX = Math.floor(Math.random() * (649 - 1 + 1)) + 1;
     } else if (difficulty == "hard") {
-        monIDX = getRandom(1, 1025);
+        monIDX = Math.floor(Math.random() * (1025 - 1 + 1)) + 1;
     }
 
     const pkmn = await getPokemon(monIDX);
