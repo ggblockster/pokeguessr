@@ -98,13 +98,13 @@ button#pause.hidden {
     }
     button:not(#clicktoplayBtn, #pause) {
         font-family: 'frlg';
-        font-size: 9px;
+        font-size: 18px;
     }
     p {
         color: #d8d8d8;
         text-shadow: 1px 1px #383838;
         font-family: 'frlg';
-        font-size: 9px;
+        font-size: 18px;
     }
     .btncol.title {
         border-image: url("/assets/button.png") 8 stretch;
@@ -142,7 +142,7 @@ button#pause.hidden {
         padding-right: 20px;
         filter: drop-shadow(0 0 0 white 4px);
         #menuHeader {
-            font-size: 9px;
+            font-size: 18px;
             transform: translateY(-6px);
         }
         .itemScroll {
@@ -156,7 +156,7 @@ button#pause.hidden {
                 line-height: 21px;
                 text-shadow: 1px 1px #d8d8d8;
                 font-family: 'frlg';
-                font-size: 9px;
+                font-size: 18px;
             }
         }
         button {
@@ -197,7 +197,7 @@ button#pause.hidden {
         padding-right: 28px;
         filter: drop-shadow(0 0 0 white 4px);
         #mainmenuHeader {
-            font-size: 9px;
+            font-size: 18px;
             transform: translateY(-6px);
         }
         .itemScroll {
@@ -211,7 +211,7 @@ button#pause.hidden {
                 line-height: 21px;
                 text-shadow: 1px 1px #d8d8d8;
                 font-family: 'frlg';
-                font-size: 9px;
+                font-size: 18px;
             }
         }
         button {
@@ -290,7 +290,7 @@ button#pause.hidden {
         flex-direction: column;
         p, input {
             font-family: 'frlg';
-            font-size: 9px;
+            font-size: 18px;
             color: #383838;
             text-shadow: 2px 2px #d8d8d8;
         }
@@ -303,7 +303,7 @@ button#pause.hidden {
             border: 8px solid transparent;
             border-image: url("/assets/button.png") 8 fill stretch;
             font-family: 'frlg';
-            font-size: 9px;
+            font-size: 18px;
         }
         input:focus {
             border-image: url("/assets/button_focus.png") 8 fill stretch;
