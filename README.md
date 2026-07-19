@@ -1,4 +1,4 @@
-![logo](https://raw.githubusercontent.com/ggblockster/pokeguessr/refs/heads/main/assets/logo.png)
+![logo](https://raw.githubusercontent.com/ggblockster/pokeguessr/refs/heads/main/assets/logo.png)<br>
 A Pokémon-based browser game where you guess Pokémon.
 
 ## License:
