@@ -1,4 +1,4 @@
-console.log("\n%cPokéGuessr v1.0\n", 
+console.log("\n%cPokéGuessr v1.1\n", 
     "color: lightgreen; font-size: 36px; font-family: Bahnschrift, sans-serif");
 
 console.log(`\n\t%cThis was made with plain HTML, CSS, and JavaScript by ggblockster.
