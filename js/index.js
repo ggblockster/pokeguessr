@@ -254,6 +254,7 @@ const timedBtn = document.getElementById("timedMode");
 const pkmnIMG = document.getElementById("mon");
 let monIDX = 0;
 const guessInput = document.getElementById("guessInput");
+const ansIndic = document.getElementById("ansIndic");
 let guess = "";
 let correctAnswer = "";
 pkmnIMG.classList.add("hidden");
@@ -270,7 +271,10 @@ async function getPokemon(id) {
 function normalize(str) {
     return str
         .toLowerCase()
-        .replace(/[^a-z0-9]/g, "");
+        .replace(/[^a-z0-9]/g, "")
+        .replace("-male", "")
+        .replace("-female", "")
+        .replace("-ice", '');
 }
 
 function levenshtein(a, b) {
@@ -328,6 +332,7 @@ function isCloseEnough(guess, answer) {
 }
 
 async function showMon(dexNum) {
+    ansIndic.setAttribute("src", "/assets/blank.png");
     const pokemon = await getPokemon(dexNum);
 
     const bw = pokemon.sprites.versions?.["generation-v"]?.["black-white"];
@@ -346,7 +351,11 @@ async function showMon(dexNum) {
 
 normalBtn.addEventListener("click", () => {
     sfxSelect.play();
-    startGame(musGAME1);
+    if (localStorage.getItem("difficulty") == 'hard') {
+        startGame(musGAME2);
+    } else {
+        startGame(musGAME1);
+    }
     guessInput.focus();
     refreshMon();
 });
@@ -378,9 +387,11 @@ guessInput.addEventListener("keydown", async (e) => {
 
     if (isCloseEnough(guess, correctAnswer)) {
         guessInput.value = correctAnswer.replaceAll("-", " ");
+        ansIndic.setAttribute("src", "/assets/correct.png");
         sfxCorrectAns.play();
     } else {
         guessInput.setAttribute("placeholder", correctAnswer);
+        ansIndic.setAttribute("src", "/assets/wrong.png");
         sfxWrongAnswer.play();
     }
 
