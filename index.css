@@ -290,11 +290,17 @@ button#pause.hidden {
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        p, input {
+        p {
             font-family: 'frlg';
             font-size: 18px;
             color: #383838;
             text-shadow: 2px 2px #d8d8d8;
+        }
+        .inputRow {
+            display: flex;
+            gap: 12px;
+            position: absolute;
+            transform: translate(12px, 22px);
         }
         input {
             padding: 0;
@@ -302,14 +308,18 @@ button#pause.hidden {
             text-shadow: 1px 1px #d8d8d8;
             background-color: transparent;
             box-sizing: border-box;
-            border: 8px solid transparent;
-            border-image: url("/assets/button.png") 8 fill stretch;
             font-family: 'frlg';
+            border: none;
+            padding: 0;
             font-size: 18px;
+            width: 150px;
         }
         input:focus {
-            border-image: url("/assets/button_focus.png") 8 fill stretch;
-            outline: transparent 0px solid;
+            outline: 0px solid transparent;
+        }
+        img#ansIndic {
+            width: 32px;
+            height: 32px;
         }
     }
     img#mon {
